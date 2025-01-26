@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Play, Pause, Volume2, Users, Music2, Zap, Brain, Moon, Wind } from "lucide-react";
+import { Play, Pause, Users, Music2, Zap, Brain, Moon, Wind } from "lucide-react";
 
 const RadioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [time, setTime] = useState(0);
   const [activeChannel, setActiveChannel] = useState("Focus Music");
+  const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const channels = [
@@ -41,7 +42,16 @@ const RadioPlayer = () => {
     const shouldStartPlaying = !isPlaying;
 
     if (shouldStartPlaying && audio.src === "") {
+      setIsLoading(true);
       audio.src = "http://localhost:8000/live";
+
+      audio.addEventListener("canplay", () => {
+        setIsLoading(false);
+      });
+
+      audio.addEventListener("error", () => {
+        setIsLoading(false);
+      });
     }
 
     shouldStartPlaying ? audio.play() : audio.pause();
@@ -61,7 +71,17 @@ const RadioPlayer = () => {
             <span className="text-sm">99 people listening now</span>
           </div>
           <h2 className="text-xl font-semibold text-center text-cyan-400 mt-2 mb-4">
-            <span className="flex items-center justify-center gap-2">Focus Music</span>
+            <span className="flex items-center justify-center gap-2">
+              {isLoading ? (
+                <span className="text-cyan-400/80 text-base">
+                  Tuning
+                  <span>...</span>
+                  <span className="text-xs ml-2">{(Math.random() * 100).toFixed(1)} MHz</span>
+                </span>
+              ) : (
+                activeChannel
+              )}
+            </span>
           </h2>
           <div className="flex justify-center items-center h-20 mb-8 gap-1">
             {[...Array(20)].map((_, i) => (
@@ -79,9 +99,18 @@ const RadioPlayer = () => {
           <div className="flex flex-col items-center gap-8">
             <button
               onClick={togglePlay}
-              className="w-20 h-20 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors duration-300 text-slate-900 shadow-lg shadow-cyan-500/30"
+              disabled={isLoading}
+              className="w-20 h-20 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors duration-300 text-slate-900 shadow-lg shadow-cyan-500/30 relative"
             >
-              {isPlaying ? <Pause className="w-10 h-10" /> : <Play className="w-10 h-10 ml-1" />}
+              {isLoading ? (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full border-4 border-slate-900/20 border-t-slate-900 animate-spin" />
+                </div>
+              ) : isPlaying ? (
+                <Pause className="w-10 h-10" />
+              ) : (
+                <Play className="w-10 h-10 ml-1" />
+              )}
             </button>
 
             <div>
