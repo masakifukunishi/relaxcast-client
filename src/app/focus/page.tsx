@@ -1,12 +1,14 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from "react";
 import { Play, Pause, Volume2, Users, Music2, Zap, Brain, Moon, Wind } from "lucide-react";
 
 const RadioPlayer = () => {
-  const [playerState, setPlayerState] = useState("stopped"); // "stopped", "loading", "playing"
+  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [time, setTime] = useState(0);
   const [activeChannel, setActiveChannel] = useState("Focus Music");
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const channels = [
     { name: "Focus Music", icon: <Zap className="w-4 h-4" /> },
@@ -20,7 +22,10 @@ const RadioPlayer = () => {
     const timer = setInterval(() => {
       setTime((prev) => (prev + 1) % 100);
     }, 50);
-    return () => clearInterval(timer);
+
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -29,33 +34,14 @@ const RadioPlayer = () => {
     }
   }, [volume]);
 
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.onplaying = () => setPlayerState("playing");
-      audioRef.current.onwaiting = () => setPlayerState("loading");
-      audioRef.current.onpause = () => setPlayerState("stopped");
-    }
-  }, []);
-
   const togglePlay = () => {
     if (audioRef.current) {
-      if (playerState === "playing") {
+      if (isPlaying) {
         audioRef.current.pause();
       } else {
-        setPlayerState("loading");
-        audioRef.current.play().catch(() => setPlayerState("stopped"));
+        audioRef.current.play();
       }
-    }
-  };
-
-  const getStatusText = () => {
-    switch (playerState) {
-      case "loading":
-        return "Connecting...";
-      case "playing":
-        return "Now Playing";
-      default:
-        return "Ready to Play";
+      setIsPlaying(!isPlaying);
     }
   };
 
@@ -79,8 +65,8 @@ const RadioPlayer = () => {
                 key={i}
                 className="w-2 bg-cyan-400 rounded-full transition-all duration-200"
                 style={{
-                  height: playerState === "playing" ? `${20 + Math.sin((time + i * 10) * 0.1) * 20}px` : "4px",
-                  opacity: playerState === "stopped" ? 0.3 : 0.7,
+                  height: isPlaying ? `${20 + Math.sin((time + i * 10) * 0.1) * 20}px` : "4px",
+                  opacity: isPlaying ? 0.7 : 0.3,
                 }}
               />
             ))}
@@ -89,15 +75,9 @@ const RadioPlayer = () => {
           <div className="flex items-center justify-center gap-8">
             <button
               onClick={togglePlay}
-              disabled={playerState === "loading"}
-              className={`w-16 h-16 flex items-center justify-center rounded-full transition-all duration-300 text-slate-900 shadow-lg shadow-cyan-500/30
-                ${playerState === "loading" ? "bg-cyan-500/50 cursor-wait" : "bg-cyan-500 hover:bg-cyan-400"}`}
+              className="w-16 h-16 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors duration-300 text-slate-900 shadow-lg shadow-cyan-500/30"
             >
-              {playerState === "playing" ? (
-                <Pause className="w-8 h-8" />
-              ) : (
-                <Play className={`w-8 h-8 ml-1 ${playerState === "loading" ? "animate-pulse" : ""}`} />
-              )}
+              {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
             </button>
 
             <div className="flex items-center gap-4">
@@ -113,7 +93,7 @@ const RadioPlayer = () => {
             </div>
           </div>
 
-          <div className="mt-6 text-center text-cyan-400 text-sm">{getStatusText()}</div>
+          <div className="mt-6 text-center text-cyan-400 text-sm">{isPlaying ? "Now Playing" : "Ready to Play"}</div>
         </div>
 
         <div className="pt-8 border-t border-slate-800">
