@@ -92,8 +92,6 @@ const RadioPlayer = () => {
               />
             </div>
           </div>
-
-          <div className="mt-6 text-center text-cyan-400 text-sm">{isPlaying ? `Now Playing: ${activeChannel}` : "Ready to Play"}</div>
         </div>
 
         <div className="pt-8 border-t border-slate-800">
@@ -102,7 +100,6 @@ const RadioPlayer = () => {
             {channels.map((channel) => (
               <button
                 key={channel.name}
-                onClick={() => setActiveChannel(channel.name)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${
                   activeChannel === channel.name ? "bg-cyan-500/20 text-cyan-400" : "hover:bg-slate-800/50 text-slate-400"
                 }`}
