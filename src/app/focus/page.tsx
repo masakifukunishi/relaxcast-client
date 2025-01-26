@@ -35,19 +35,22 @@ const RadioPlayer = () => {
   }, [volume]);
 
   const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (!audioRef.current) return;
+
+    const audio = audioRef.current;
+    const shouldStartPlaying = !isPlaying;
+
+    if (shouldStartPlaying && audio.src === "") {
+      audio.src = "http://localhost:8000/live";
     }
+
+    shouldStartPlaying ? audio.play() : audio.pause();
+    setIsPlaying(shouldStartPlaying);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
-      <audio ref={audioRef} src="http://localhost:8000/live" />
+      <audio ref={audioRef} />
       <div className="relative bg-slate-900/80 backdrop-blur-sm p-8 rounded-lg shadow-2xl max-w-md w-full border border-cyan-500/10">
         <div className="absolute inset-0 -z-10 bg-cyan-500/10 blur-3xl rounded-full" />
 
