@@ -49,19 +49,20 @@ const RadioPlayer = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
-      <audio ref={audioRef} />
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col items-center justify-center p-4">
       <div className="relative bg-slate-900/80 backdrop-blur-sm p-8 rounded-lg shadow-2xl max-w-md w-full border border-cyan-500/10">
+        <audio ref={audioRef} />
         <div className="absolute inset-0 -z-10 bg-cyan-500/10 blur-3xl rounded-full" />
 
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-center mb-8 text-cyan-400 animate-pulse">Minimal Tune</h2>
-
+          <h1 className="text-3xl font-bold text-center mb-4 text-cyan-400 animate-pulse">Minimal Tune</h1>
           <div className="flex items-center justify-center gap-2 mb-6 text-cyan-400/80">
             <Users className="w-4 h-4" />
             <span className="text-sm">99 people listening now</span>
           </div>
-
+          <h2 className="text-xl font-semibold text-center text-cyan-400 mt-2 mb-4">
+            <span className="flex items-center justify-center gap-2">Focus Music</span>
+          </h2>
           <div className="flex justify-center items-center h-20 mb-8 gap-1">
             {[...Array(20)].map((_, i) => (
               <div
@@ -75,28 +76,25 @@ const RadioPlayer = () => {
             ))}
           </div>
 
-          <div className="flex items-center justify-center gap-8">
+          <div className="flex flex-col items-center gap-8">
             <button
               onClick={togglePlay}
-              className="w-16 h-16 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors duration-300 text-slate-900 shadow-lg shadow-cyan-500/30"
+              className="w-20 h-20 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors duration-300 text-slate-900 shadow-lg shadow-cyan-500/30"
             >
-              {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
+              {isPlaying ? <Pause className="w-10 h-10" /> : <Play className="w-10 h-10 ml-1" />}
             </button>
 
-            <div className="flex items-center gap-4">
-              <Volume2 className="w-6 h-6 text-cyan-400" />
+            <div>
               <input
                 type="range"
                 min="0"
                 max="100"
                 value={volume}
                 onChange={(e) => setVolume(Number(e.target.value))}
-                className="w-32 accent-cyan-400"
+                className="w-24 accent-cyan-400"
               />
             </div>
           </div>
-
-          <div className="mt-6 text-center text-cyan-400 text-sm">{isPlaying ? "Now Playing" : "Ready to Play"}</div>
         </div>
 
         <div className="pt-8 border-t border-slate-800">
