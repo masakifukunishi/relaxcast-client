@@ -8,22 +8,15 @@ import { IoPlayCircleOutline, IoPauseCircleOutline } from "react-icons/io5";
 export default function Focus() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const togglePlay = async () => {
+  const togglePlay = () => {
     if (audioRef.current) {
-      try {
-        if (isPlaying) {
-          audioRef.current.pause();
-        } else {
-          await audioRef.current.play();
-        }
-        setIsPlaying(!isPlaying);
-        setError(null);
-      } catch (err) {
-        setError("Failed to play audio. Please try again.");
-        console.error("Playback error:", err);
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
       }
+      setIsPlaying(!isPlaying);
     }
   };
 
@@ -46,15 +39,13 @@ export default function Focus() {
         <h1 className="text-4xl font-bold mb-12">Focus</h1>
 
         <div className="flex flex-col items-center gap-8">
-          <audio ref={audioRef} src="/api/stream/focus" preload="none" />
+          <audio ref={audioRef} src="http://localhost:8000/live" preload="none" />
 
           <button onClick={togglePlay} className="p-4 hover:scale-110 transition-transform" aria-label={isPlaying ? "Pause" : "Play"}>
             {isPlaying ? <IoPauseCircleOutline size={64} /> : <IoPlayCircleOutline size={64} />}
           </button>
 
           <div className="text-xl font-medium text-white/80">{isPlaying ? "Now Playing" : "Paused"}</div>
-
-          {error && <div className="text-red-500 text-center mt-4">{error}</div>}
         </div>
       </div>
     </div>
