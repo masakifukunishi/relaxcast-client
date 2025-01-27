@@ -59,19 +59,19 @@ const RadioPlayer = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 flex flex-col items-center justify-center">
       <div className="w-full max-w-2xl px-8 py-12">
         <audio ref={audioRef} />
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-center mb-4 text-cyan-400 animate-pulse">Minimal Tune</h1>
-          <div className="flex items-center justify-center gap-2 mb-6 text-cyan-400/80">
+          <h1 className="text-3xl font-bold text-center mb-4 text-amber-200">Minimal Tune</h1>
+          <div className="flex items-center justify-center gap-2 mb-6 text-amber-200/80">
             <Users className="w-4 h-4" />
             <span className="text-sm">99 people listening now</span>
           </div>
-          <h2 className="text-xl font-semibold text-center text-cyan-400 mt-2 mb-4">
+          <h2 className="text-xl font-semibold text-center text-amber-200 mt-2 mb-4">
             <span className="flex items-center justify-center gap-2">
               {isLoading ? (
-                <span className="text-cyan-400/80 text-base">
+                <span className="text-amber-200/80 text-base">
                   Tuning
                   <span>...</span>
                   <span className="text-xs ml-2">{(Math.random() * 100).toFixed(1)} MHz</span>
@@ -85,10 +85,10 @@ const RadioPlayer = () => {
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 bg-cyan-400 rounded-full transition-all duration-200"
+                className="w-2 bg-amber-200 rounded-full transition-all duration-500"
                 style={{
                   height: isPlaying ? `${20 + Math.sin((time + i * 10) * 0.1) * 20}px` : "4px",
-                  opacity: isPlaying ? 0.7 : 0.3,
+                  opacity: isPlaying ? 0.5 : 0.2,
                 }}
               />
             ))}
@@ -98,13 +98,13 @@ const RadioPlayer = () => {
             <button
               onClick={togglePlay}
               disabled={isLoading}
-              className={`w-20 h-20 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors duration-300 text-slate-900 shadow-lg shadow-cyan-500/30 relative ${
+              className={`w-20 h-20 flex items-center justify-center rounded-full bg-amber-700 hover:bg-amber-600 transition-colors duration-300 text-amber-100 shadow-lg shadow-amber-900/30 relative ${
                 isPlaying ? "opacity-70" : ""
               }`}
             >
               {isLoading ? (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full border-4 border-slate-900/20 border-t-slate-900 animate-spin" />
+                  <div className="w-12 h-12 rounded-full border-4 border-amber-100/20 border-t-amber-100 animate-spin" />
                 </div>
               ) : isPlaying ? (
                 <Pause className="w-10 h-10" />
@@ -120,21 +120,21 @@ const RadioPlayer = () => {
                 max="100"
                 value={volume}
                 onChange={(e) => setVolume(Number(e.target.value))}
-                className="w-24 accent-cyan-400"
+                className="w-24 accent-amber-600"
               />
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-800">
-          <h3 className="text-sm text-slate-400 mb-4 text-center">Channels</h3>
+        <div className="pt-8 border-t border-stone-800">
+          <h3 className="text-sm text-stone-400 mb-4 text-center">Channels</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {channels.map((channel) => (
               <button
                 key={channel.name}
                 onClick={() => setActiveChannel(channel.name)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${
-                  activeChannel === channel.name ? "bg-cyan-500/20 text-cyan-400" : "hover:bg-slate-800/50 text-slate-400"
+                  activeChannel === channel.name ? "bg-amber-900/40 text-amber-200" : "hover:bg-stone-800/50 text-stone-400"
                 }`}
               >
                 {channel.icon}
