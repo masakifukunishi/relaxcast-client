@@ -68,15 +68,11 @@ const RadioPlayer = () => {
           backgroundPosition: "center",
         }}
       />
-      <div className="absolute inset-0 z-0 bg-black/50" />
+      <div className="absolute inset-0 z-0 bg-black/60" />
       <div className="w-full max-w-2xl px-8 py-12 relative z-10">
         <audio ref={audioRef} />
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-center mb-4 text-amber-200 [text-shadow:_0_4px_8px_rgba(0,0,0,0.8)]">Minimal Tune</h1>
-          <div className="flex items-center justify-center gap-2 mb-6 text-amber-200/80 [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)]">
-            <Users className="w-4 h-4" />
-            <span>99 people listening now</span>
-          </div>
           <h2 className="text-xl font-semibold text-center text-amber-200 mt-2 mb-4 [text-shadow:_0_3px_6px_rgba(0,0,0,0.8)]">
             <span className="flex items-center justify-center gap-2">
               {isLoading ? (
@@ -134,7 +130,16 @@ const RadioPlayer = () => {
             </div>
           </div>
         </div>
-
+        <div className="flex items-center justify-center gap-2 mb-6 font-semibold">
+          <Users className="w-4 h-4 text-amber-200/90" />
+          <span className="text-amber-200 [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)]">
+            <span className="text-lg mr-1">99</span>
+            people listening now
+            <span className="font-bold text-lg animate-ping ml-1">
+              <span>...</span>
+            </span>
+          </span>
+        </div>
         <div className="pt-8 border-t border-stone-800">
           <h3 className="text-sm text-stone-400 mb-4 text-center [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)]">Channels</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
