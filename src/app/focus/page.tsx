@@ -100,7 +100,9 @@ const RadioPlayer = () => {
             <button
               onClick={togglePlay}
               disabled={isLoading}
-              className="w-20 h-20 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors duration-300 text-slate-900 shadow-lg shadow-cyan-500/30 relative"
+              className={`w-20 h-20 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors duration-300 text-slate-900 shadow-lg shadow-cyan-500/30 relative ${
+                isPlaying ? "opacity-70" : ""
+              }`}
             >
               {isLoading ? (
                 <div className="absolute inset-0 flex items-center justify-center">
