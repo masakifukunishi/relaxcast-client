@@ -59,14 +59,23 @@ const RadioPlayer = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 flex flex-col items-center justify-center">
-      <div className="w-full max-w-2xl px-8 py-12">
+    <div className="min-h-screen relative flex flex-col items-center justify-center">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url('/images/focus/01.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 z-0 bg-black/50" />
+      <div className="w-full max-w-2xl px-8 py-12 relative z-10">
         <audio ref={audioRef} />
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-center mb-4 text-amber-200">Minimal Tune</h1>
           <div className="flex items-center justify-center gap-2 mb-6 text-amber-200/80">
             <Users className="w-4 h-4" />
-            <span className="text-sm">99 people listening now</span>
+            <span>99 people listening now</span>
           </div>
           <h2 className="text-xl font-semibold text-center text-amber-200 mt-2 mb-4">
             <span className="flex items-center justify-center gap-2">
