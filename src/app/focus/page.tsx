@@ -85,10 +85,10 @@ const RadioPlayer = () => {
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 bg-amber-200 rounded-full transition-all duration-500"
+                className="w-2 bg-amber-200 rounded-full transition-all duration-200"
                 style={{
                   height: isPlaying ? `${20 + Math.sin((time + i * 10) * 0.1) * 20}px` : "4px",
-                  opacity: isPlaying ? 0.5 : 0.2,
+                  opacity: isPlaying ? 0.7 : 0.3,
                 }}
               />
             ))}
