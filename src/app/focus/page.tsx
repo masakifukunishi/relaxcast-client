@@ -59,11 +59,9 @@ const RadioPlayer = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col items-center justify-center p-4">
-      <div className="relative bg-slate-900/80 backdrop-blur-sm p-8 rounded-lg shadow-2xl max-w-md w-full border border-cyan-500/10">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col items-center justify-center">
+      <div className="w-full max-w-2xl px-8 py-12">
         <audio ref={audioRef} />
-        <div className="absolute inset-0 -z-10 bg-cyan-500/10 blur-3xl rounded-full" />
-
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-center mb-4 text-cyan-400 animate-pulse">Minimal Tune</h1>
           <div className="flex items-center justify-center gap-2 mb-6 text-cyan-400/80">
@@ -130,7 +128,7 @@ const RadioPlayer = () => {
 
         <div className="pt-8 border-t border-slate-800">
           <h3 className="text-sm text-slate-400 mb-4 text-center">Channels</h3>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {channels.map((channel) => (
               <button
                 key={channel.name}
