@@ -63,7 +63,7 @@ const RadioPlayer = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/images/focus/01.jpg')",
+          backgroundImage: "url('/images/focus/02.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -141,14 +141,14 @@ const RadioPlayer = () => {
           </span>
         </div>
         <div className="pt-8 border-t border-stone-800">
-          <h3 className="text-sm text-stone-400 mb-4 text-center [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)]">Channels</h3>
+          <h3 className="text-sm text-stone-300 mb-4 text-center [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)]">Channels</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {channels.map((channel) => (
               <button
                 key={channel.name}
                 onClick={() => setActiveChannel(channel.name)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)] ${
-                  activeChannel === channel.name ? "bg-amber-900/40 text-amber-200" : "hover:bg-stone-800/50 text-stone-400"
+                  activeChannel === channel.name ? "bg-amber-900/40 text-amber-200" : "hover:bg-stone-800/50 text-stone-300"
                 }`}
               >
                 {channel.icon}
