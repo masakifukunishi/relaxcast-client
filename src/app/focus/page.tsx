@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Play, Pause, Users, Music2, Zap, Brain, Moon, Wind } from "lucide-react";
+import { Play, Pause, Users, Piano, Umbrella, Waves } from "lucide-react";
 
 const RadioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -12,11 +12,9 @@ const RadioPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const channels = [
-    { name: "Focus Music", icon: <Zap className="w-4 h-4" /> },
-    { name: "Relax Music", icon: <Music2 className="w-4 h-4" /> },
-    { name: "Meditation Music", icon: <Brain className="w-4 h-4" /> },
-    { name: "Sleep Music", icon: <Moon className="w-4 h-4" /> },
-    { name: "White Noise", icon: <Wind className="w-4 h-4" /> },
+    { name: "Jazz Music", icon: <Piano className="w-4 h-4" /> },
+    { name: "Rain Sound", icon: <Umbrella className="w-4 h-4" /> },
+    { name: "White Noise", icon: <Waves className="w-4 h-4" /> },
   ];
 
   useEffect(() => {
@@ -142,12 +140,12 @@ const RadioPlayer = () => {
         </div>
         <div className="pt-8 border-t border-stone-800">
           <h3 className="text-sm text-stone-300 mb-4 text-center [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)]">Channels</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+          <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
             {channels.map((channel) => (
               <button
                 key={channel.name}
                 onClick={() => setActiveChannel(channel.name)}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)] ${
+                className={`flex items-center gap-2 px-5 py-2 rounded-lg transition-all duration-300 w-48 md:w-auto justify-center [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)] ${
                   activeChannel === channel.name ? "bg-amber-900/40 text-amber-200" : "hover:bg-stone-800/50 text-stone-300"
                 }`}
               >
