@@ -15,9 +15,9 @@ const JazzMusic = () => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
     streamUrl: `${process.env.NEXT_PUBLIC_STREAM_URL}/live`,
   });
-  const { time } = useWaveform();
   const { volume, setVolume } = useVolume({ audioRef });
 
+  console.log("run");
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center">
       <div
@@ -33,7 +33,7 @@ const JazzMusic = () => {
         <audio ref={audioRef} />
         <div className="mb-8">
           <RadioHeader isLoading={isLoading} subtitle="Jazz Music" />
-          <WaveformVisualizer isPlaying={isPlaying} time={time} />
+          <WaveformVisualizer isPlaying={isPlaying} />
           <div className="flex flex-col items-center gap-8">
             <PlayButton isPlaying={isPlaying} isLoading={isLoading} onClick={togglePlay} />
             <VolumeControl volume={volume} onChange={setVolume} />

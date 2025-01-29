@@ -1,10 +1,12 @@
+import { useWaveform } from "@/app/hooks/useWaveform";
+
 interface WaveformVisualizerProps {
   isPlaying: boolean;
-  time: number;
-  barCount?: number;
 }
 
-const WaveformVisualizer = ({ isPlaying, time, barCount = 20 }: WaveformVisualizerProps) => {
+const WaveformVisualizer = ({ isPlaying }: WaveformVisualizerProps) => {
+  const { time } = useWaveform();
+  const barCount = 20;
   return (
     <div className="flex justify-center items-center h-20 mb-8 gap-1">
       {[...Array(barCount)].map((_, i) => (
