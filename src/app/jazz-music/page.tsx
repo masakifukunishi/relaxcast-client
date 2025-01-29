@@ -1,6 +1,5 @@
 "use client";
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Channels from "@/app/features/components/common/Channels";
 import ListenerCount from "@/app/features/components/common/ListenerCount";
 import VolumeControl from "@/app/features/components/common/VolumeControl";
@@ -8,7 +7,6 @@ import WaveformVisualizer from "@/app/features/components/common/WaveformVisuali
 import PlayButton from "@/app/features/components/common/PlayButton";
 import RadioHeader from "@/app/features/components/common/RadioHeader";
 import { useAudioPlayer } from "@/app/hooks/useAudioPlayer";
-import { useWaveform } from "@/app/hooks/useWaveform";
 import { useVolume } from "@/app/hooks/useVolume";
 
 const JazzMusic = () => {
@@ -17,13 +15,21 @@ const JazzMusic = () => {
   });
   const { volume, setVolume } = useVolume({ audioRef });
 
-  console.log("run");
+  const [backgroundImage, setBackgroundImage] = useState("");
+
+  useEffect(() => {
+    const backgrounds = ["background-01.jpg", "background-02.jpg", "background-03.jpg", "background-04.jpg", "background-05.jpg"];
+    const randomIndex = Math.floor(Math.random() * backgrounds.length);
+    const selectedBackground = backgrounds[randomIndex];
+    setBackgroundImage(`/images/rain-sound/${selectedBackground}`);
+  }, []);
+
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center">
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/images/rain-sound/background-05.jpg')",
+          backgroundImage: `url('${backgroundImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
