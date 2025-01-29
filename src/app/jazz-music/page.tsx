@@ -13,7 +13,7 @@ import { useVolume } from "@/app/hooks/useVolume";
 
 const JazzMusic = () => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
-    streamUrl: process.env.NEXT_PUBLIC_STREAM_URL || "http://localhost:8000/live",
+    streamUrl: `${process.env.NEXT_PUBLIC_STREAM_URL}/live`,
   });
   const { time } = useWaveform();
   const { volume, setVolume } = useVolume({ audioRef });
