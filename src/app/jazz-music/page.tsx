@@ -1,4 +1,5 @@
 "use client";
+
 import Channels from "@/app/features/components/common/Channels";
 import ListenerCount from "@/app/features/components/common/ListenerCount";
 import VolumeControl from "@/app/features/components/common/VolumeControl";
@@ -8,6 +9,7 @@ import RadioHeader from "@/app/features/components/common/RadioHeader";
 import { useAudioPlayer } from "@/app/hooks/useAudioPlayer";
 import { useVolume } from "@/app/hooks/useVolume";
 import { useRandomBackground } from "@/app/hooks/useRandomBackground";
+import { useMediaSession } from "@/app/hooks/useMediaSession";
 
 const JazzMusic = () => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
@@ -15,6 +17,8 @@ const JazzMusic = () => {
   });
   const { volume, setVolume } = useVolume({ audioRef });
   const { backgroundImage, isImageLoaded } = useRandomBackground("/images/rain-sound");
+
+  useMediaSession({ togglePlay });
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center">
