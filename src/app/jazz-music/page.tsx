@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Play, Pause } from "lucide-react";
 import Channels from "@/features/components/common/Channels";
 import ListenerCount from "@/features/components/common/ListenerCount";
+import VolumeControl from "@/features/components/common/VolumeControl";
+import WaveformVisualizer from "@/features/components/common/WaveformVisualizer";
 
 const RadioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -79,18 +81,8 @@ const RadioPlayer = () => {
               )}
             </span>
           </h2>
-          <div className="flex justify-center items-center h-20 mb-8 gap-1">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="w-2 bg-amber-200 rounded-full transition-all duration-200"
-                style={{
-                  height: isPlaying ? `${20 + Math.sin((time + i * 10) * 0.1) * 20}px` : "4px",
-                  opacity: isPlaying ? 0.7 : 0.3,
-                }}
-              />
-            ))}
-          </div>
+
+          <WaveformVisualizer isPlaying={isPlaying} time={time} />
 
           <div className="flex flex-col items-center gap-8">
             <button
@@ -111,16 +103,7 @@ const RadioPlayer = () => {
               )}
             </button>
 
-            <div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={volume}
-                onChange={(e) => setVolume(Number(e.target.value))}
-                className="w-24 accent-amber-600"
-              />
-            </div>
+            <VolumeControl volume={volume} onChange={setVolume} />
           </div>
         </div>
         <ListenerCount />
