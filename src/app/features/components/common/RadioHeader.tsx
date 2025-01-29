@@ -2,10 +2,10 @@ import React from "react";
 
 interface RadioHeaderProps {
   isLoading: boolean;
-  subtitle?: string;
+  subtitle: string;
 }
 
-const RadioHeader: React.FC<RadioHeaderProps> = ({ isLoading, subtitle = "Jazz Music" }) => {
+const RadioHeader = ({ isLoading, subtitle }: RadioHeaderProps) => {
   return (
     <>
       <h1 className="text-3xl font-bold text-center mb-4 text-amber-200 [text-shadow:_0_4px_8px_rgba(0,0,0,0.8)]">Minimal Tune</h1>
