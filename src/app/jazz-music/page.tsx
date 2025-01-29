@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import Channels from "@/features/components/common/Channels";
-import ListenerCount from "@/features/components/common/ListenerCount";
-import VolumeControl from "@/features/components/common/VolumeControl";
-import WaveformVisualizer from "@/features/components/common/WaveformVisualizer";
-import PlayButton from "@/features/components/common/PlayButton";
-import RadioHeader from "@/features/components/common/RadioHeader";
+import React, { useState, useEffect } from "react";
+import Channels from "@/app/features/components/common/Channels";
+import ListenerCount from "@/app/features/components/common/ListenerCount";
+import VolumeControl from "@/app/features/components/common/VolumeControl";
+import WaveformVisualizer from "@/app/features/components/common/WaveformVisualizer";
+import PlayButton from "@/app/features/components/common/PlayButton";
+import RadioHeader from "@/app/features/components/common/RadioHeader";
+import { useAudioPlayer } from "@/app/hooks/useAudioPlayer";
 
 const RadioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [time, setTime] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
+    streamUrl: "http://localhost:8000/live",
+  });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,29 +31,6 @@ const RadioPlayer = () => {
       audioRef.current.volume = volume / 100;
     }
   }, [volume]);
-
-  const togglePlay = () => {
-    if (!audioRef.current) return;
-
-    const audio = audioRef.current;
-    const shouldStartPlaying = !isPlaying;
-
-    if (shouldStartPlaying && audio.src === "") {
-      setIsLoading(true);
-      audio.src = "http://localhost:8000/live";
-
-      audio.addEventListener("canplay", () => {
-        setIsLoading(false);
-      });
-
-      audio.addEventListener("error", () => {
-        setIsLoading(false);
-      });
-    }
-
-    shouldStartPlaying ? audio.play() : audio.pause();
-    setIsPlaying(shouldStartPlaying);
-  };
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center">
