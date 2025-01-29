@@ -23,7 +23,7 @@ const RadioPlayer = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/images/jazz-music/background-05.jpg')",
+          backgroundImage: "url('/images/rain-sound/background-05.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
