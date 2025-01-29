@@ -9,7 +9,6 @@ const RadioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [time, setTime] = useState(0);
-  const [activeChannel, setActiveChannel] = useState("jazz-music");
   const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -125,7 +124,7 @@ const RadioPlayer = () => {
           </div>
         </div>
         <ListenerCount />
-        <Channels activeChannel={activeChannel} onChannelChange={setActiveChannel} />
+        <Channels />
       </div>
     </div>
   );
