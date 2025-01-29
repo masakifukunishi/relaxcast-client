@@ -7,7 +7,7 @@ interface PlayButtonProps {
   onClick: () => void;
 }
 
-const PlayButton: React.FC<PlayButtonProps> = ({ isPlaying, isLoading, onClick }) => {
+const PlayButton = ({ isPlaying, isLoading, onClick }: PlayButtonProps) => {
   return (
     <button
       onClick={onClick}

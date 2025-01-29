@@ -5,7 +5,7 @@ interface VolumeControlProps {
   onChange: (value: number) => void;
 }
 
-const VolumeControl: React.FC<VolumeControlProps> = ({ volume, onChange }) => {
+const VolumeControl = ({ volume, onChange }: VolumeControlProps) => {
   return (
     <div className="flex items-center gap-2">
       <input

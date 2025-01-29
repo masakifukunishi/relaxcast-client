@@ -6,7 +6,7 @@ interface WaveformVisualizerProps {
   barCount?: number;
 }
 
-const WaveformVisualizer: React.FC<WaveformVisualizerProps> = ({ isPlaying, time, barCount = 20 }) => {
+const WaveformVisualizer = ({ isPlaying, time, barCount = 20 }: WaveformVisualizerProps) => {
   return (
     <div className="flex justify-center items-center h-20 mb-8 gap-1">
       {[...Array(barCount)].map((_, i) => (
