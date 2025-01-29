@@ -11,7 +11,7 @@ import { useAudioPlayer } from "@/app/hooks/useAudioPlayer";
 import { useWaveform } from "@/app/hooks/useWaveform";
 import { useVolume } from "@/app/hooks/useVolume";
 
-const RadioPlayer = () => {
+const JazzMusic = () => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
     streamUrl: process.env.NEXT_PUBLIC_STREAM_URL || "http://localhost:8000/live",
   });
@@ -46,4 +46,4 @@ const RadioPlayer = () => {
   );
 };
 
-export default RadioPlayer;
+export default JazzMusic;
