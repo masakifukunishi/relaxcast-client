@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Channels from "@/app/features/components/common/Channels";
 import ListenerCount from "@/app/features/components/common/ListenerCount";
 import VolumeControl from "@/app/features/components/common/VolumeControl";
@@ -8,29 +8,15 @@ import WaveformVisualizer from "@/app/features/components/common/WaveformVisuali
 import PlayButton from "@/app/features/components/common/PlayButton";
 import RadioHeader from "@/app/features/components/common/RadioHeader";
 import { useAudioPlayer } from "@/app/hooks/useAudioPlayer";
+import { useWaveform } from "@/app/hooks/useWaveform";
+import { useVolume } from "@/app/hooks/useVolume";
 
 const RadioPlayer = () => {
-  const [volume, setVolume] = useState(50);
-  const [time, setTime] = useState(0);
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
-    streamUrl: "http://localhost:8000/live",
+    streamUrl: process.env.NEXT_PUBLIC_STREAM_URL || "http://localhost:8000/live",
   });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime((prev) => (prev + 1) % 100);
-    }, 50);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume / 100;
-    }
-  }, [volume]);
+  const { time } = useWaveform();
+  const { volume, setVolume } = useVolume({ audioRef });
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center">
