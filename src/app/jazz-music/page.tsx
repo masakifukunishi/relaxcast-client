@@ -1,5 +1,4 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import Channels from "@/app/features/components/common/Channels";
 import ListenerCount from "@/app/features/components/common/ListenerCount";
 import VolumeControl from "@/app/features/components/common/VolumeControl";
@@ -8,26 +7,19 @@ import PlayButton from "@/app/features/components/common/PlayButton";
 import RadioHeader from "@/app/features/components/common/RadioHeader";
 import { useAudioPlayer } from "@/app/hooks/useAudioPlayer";
 import { useVolume } from "@/app/hooks/useVolume";
+import { useRandomBackground } from "@/app/hooks/useRandomBackground";
 
 const JazzMusic = () => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
     streamUrl: `${process.env.NEXT_PUBLIC_STREAM_URL}/live`,
   });
   const { volume, setVolume } = useVolume({ audioRef });
-
-  const [backgroundImage, setBackgroundImage] = useState("");
-
-  useEffect(() => {
-    const backgrounds = ["background-01.jpg", "background-02.jpg", "background-03.jpg", "background-04.jpg", "background-05.jpg"];
-    const randomIndex = Math.floor(Math.random() * backgrounds.length);
-    const selectedBackground = backgrounds[randomIndex];
-    setBackgroundImage(`/images/rain-sound/${selectedBackground}`);
-  }, []);
+  const { backgroundImage, isImageLoaded } = useRandomBackground("/images/rain-sound");
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center">
       <div
-        className="absolute inset-0 z-0"
+        className={`absolute inset-0 z-0 transition-opacity duration-500 ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
         style={{
           backgroundImage: `url('${backgroundImage}')`,
           backgroundSize: "cover",
