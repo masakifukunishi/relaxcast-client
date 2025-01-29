@@ -1,21 +1,17 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Play, Pause, Users, Piano, Umbrella, Waves } from "lucide-react";
+import { Play, Pause } from "lucide-react";
+import Channels from "@/features/components/common/Channels";
+import ListenerCount from "@/features/components/common/ListenerCount";
 
 const RadioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [time, setTime] = useState(0);
-  const [activeChannel, setActiveChannel] = useState("Jazz Music");
+  const [activeChannel, setActiveChannel] = useState("jazz-music");
   const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-
-  const channels = [
-    { name: "Jazz Music", icon: <Piano className="w-4 h-4" /> },
-    { name: "Rain Sound", icon: <Umbrella className="w-4 h-4" /> },
-    { name: "White Noise", icon: <Waves className="w-4 h-4" /> },
-  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -80,7 +76,7 @@ const RadioPlayer = () => {
                   <span className="text-xs ml-2">{(Math.random() * 100).toFixed(1)} MHz</span>
                 </span>
               ) : (
-                activeChannel
+                "Jazz Music"
               )}
             </span>
           </h2>
@@ -128,33 +124,8 @@ const RadioPlayer = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-2 mb-6 font-semibold">
-          <Users className="w-4 h-4 text-amber-200/90" />
-          <span className="text-amber-200 [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)]">
-            <span className="text-lg mr-1">99</span>
-            people listening now
-            <span className="font-bold text-lg animate-ping ml-1">
-              <span>...</span>
-            </span>
-          </span>
-        </div>
-        <div className="pt-8 border-t border-stone-800">
-          <h3 className="text-sm text-stone-300 mb-4 text-center [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)]">Channels</h3>
-          <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
-            {channels.map((channel) => (
-              <button
-                key={channel.name}
-                onClick={() => setActiveChannel(channel.name)}
-                className={`flex items-center gap-2 px-5 py-2 rounded-lg transition-all duration-300 w-48 md:w-auto justify-center [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)] ${
-                  activeChannel === channel.name ? "bg-amber-900/40 text-amber-200" : "hover:bg-stone-800/50 text-stone-300"
-                }`}
-              >
-                {channel.icon}
-                <span className="text-sm">{channel.name}</span>
-              </button>
-            ))}
-          </div>
-        </div>
+        <ListenerCount />
+        <Channels activeChannel={activeChannel} onChannelChange={setActiveChannel} />
       </div>
     </div>
   );
