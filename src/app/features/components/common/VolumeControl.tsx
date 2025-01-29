@@ -1,5 +1,3 @@
-import React from "react";
-
 interface VolumeControlProps {
   volume: number;
   onChange: (value: number) => void;

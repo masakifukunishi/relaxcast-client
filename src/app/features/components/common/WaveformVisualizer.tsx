@@ -1,5 +1,3 @@
-import React from "react";
-
 interface WaveformVisualizerProps {
   isPlaying: boolean;
   time: number;
