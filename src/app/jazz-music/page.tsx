@@ -23,16 +23,16 @@ const RadioPlayer = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/images/focus/02.jpg')",
+          backgroundImage: "url('/images/jazz-music/background-05.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
-      <div className="absolute inset-0 z-0 bg-black/60" />
+      <div className="absolute inset-0 z-0 bg-black/50" />
       <div className="w-full max-w-2xl px-8 py-12 relative z-10">
         <audio ref={audioRef} />
         <div className="mb-8">
-          <RadioHeader isLoading={isLoading} />
+          <RadioHeader isLoading={isLoading} subtitle="Jazz Music" />
           <WaveformVisualizer isPlaying={isPlaying} time={time} />
           <div className="flex flex-col items-center gap-8">
             <PlayButton isPlaying={isPlaying} isLoading={isLoading} onClick={togglePlay} />
