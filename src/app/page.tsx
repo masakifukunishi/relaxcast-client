@@ -1,36 +1,32 @@
-import Link from "next/link";
+"use client";
 
-interface SoundCard {
-  title: string;
-  path: string;
-}
+import Channels from "@/app/features/components/common/Channels";
+import { useRandomBackground } from "@/app/hooks/useRandomBackground";
 
-export default function Home() {
-  const cards: SoundCard[] = [
-    { title: "Relaxing Jazz", path: "/relaxing-jazz" },
-    { title: "Rain Sounds", path: "/rain-sounds" },
-    { title: "Brown Noise", path: "/brown-noise" },
-  ];
+const Home = () => {
+  const { backgroundImage, isImageLoaded } = useRandomBackground("/images/relaxing-bg");
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-8">
-      <div className="flex flex-col items-center gap-2 mb-12 mt-24">
-        <h1 className="text-4xl font-bold">Minimal Tune</h1>
-        <h2 className="text-xl font-bold">Minimal Background music player</h2>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl">
-        {cards.map((card) => (
-          <Link
-            key={card.path}
-            href={card.path}
-            className="bg-white/10 hover:bg-white/20 rounded-lg p-6 transition-all duration-300 cursor-pointer"
-          >
-            <div className="flex flex-col items-center gap-4">
-              <h2 className="text-2xl font-semibold text-center">{card.title}</h2>
-            </div>
-          </Link>
-        ))}
+    <div className="min-h-screen relative flex flex-col items-center justify-center text-center px-6">
+      <div
+        className={`absolute inset-0 z-0 transition-opacity duration-500 ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+        style={{
+          backgroundImage: `url('${backgroundImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 z-0 bg-black/50" />
+      <div className="w-full max-w-3xl px-8 py-16 relative z-10">
+        <h1 className="text-4xl font-bold text-amber-200 mb-4 [text-shadow:_0_4px_8px_rgba(0,0,0,0.8)]">Minimal Tune</h1>
+        <p className="text-lg text-stone-300 mb-6 [text-shadow:_0_2px_4px_rgba(0,0,0,0.7)] mb-10">
+          Relaxing music, anytime and anywhere. <br />
+          Immerse yourself in a soothing experience.
+        </p>
+        <Channels />
       </div>
     </div>
   );
-}
+};
+
+export default Home;
