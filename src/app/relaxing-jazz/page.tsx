@@ -11,7 +11,7 @@ import { useVolume } from "@/app/hooks/useVolume";
 import { useRandomBackground } from "@/app/hooks/useRandomBackground";
 import { useMediaSession } from "@/app/hooks/useMediaSession";
 
-const JazzMusic = () => {
+const RelaxingJazz = () => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
     streamUrl: `${process.env.NEXT_PUBLIC_STREAM_URL}/live`,
   });
@@ -34,7 +34,7 @@ const JazzMusic = () => {
       <div className="w-full max-w-2xl px-8 py-12 relative z-10">
         <audio ref={audioRef} />
         <div className="mb-8">
-          <RadioHeader isLoading={isLoading} subtitle="Jazz Music" />
+          <RadioHeader isLoading={isLoading} subtitle="Jazz" />
           <WaveformVisualizer isPlaying={isPlaying} />
           <div className="flex flex-col items-center gap-8">
             <PlayButton isPlaying={isPlaying} isLoading={isLoading} onClick={togglePlay} />
@@ -48,4 +48,4 @@ const JazzMusic = () => {
   );
 };
 
-export default JazzMusic;
+export default RelaxingJazz;

@@ -7,11 +7,9 @@ interface SoundCard {
 
 export default function Home() {
   const cards: SoundCard[] = [
-    { title: "Focus", path: "/focus" },
-    { title: "Relax", path: "/relax" },
-    { title: "Meditation", path: "/meditation" },
-    { title: "Sleep", path: "/sleep" },
-    { title: "White Noise", path: "/white-noise" },
+    { title: "Relaxing Jazz", path: "/relaxing-jazz" },
+    { title: "Rain Sounds", path: "/rain-sounds" },
+    { title: "Brown Noise", path: "/brown-noise" },
   ];
 
   return (
