@@ -5,7 +5,7 @@ const RelaxingJazz = () => {
   return (
     <>
       <PlayerSection />
-      <AboutSection />
+      <AboutSection channelName="Relaxing Jazz" />
     </>
   );
 };

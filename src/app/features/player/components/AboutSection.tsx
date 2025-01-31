@@ -1,4 +1,8 @@
-const AboutSection = () => {
+interface AboutSectionProps {
+  channelName: string;
+}
+
+const AboutSection = ({ channelName }: AboutSectionProps) => {
   return (
     <section className="w-full bg-stone-800 text-stone-200 py-20">
       <div className="max-w-3xl mx-auto px-8">
@@ -6,7 +10,7 @@ const AboutSection = () => {
         <div className="inline-block mb-16 bg-stone-700/50 rounded-lg px-6 py-4">
           <div className="flex items-center space-x-3">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <h2 className="text-xl font-bold bg-gradient-to-r from-stone-200 to-stone-100 bg-clip-text text-transparent">Relaxing Jazz</h2>
+            <h2 className="text-xl font-bold bg-gradient-to-r from-stone-200 to-stone-100 bg-clip-text text-transparent">{channelName}</h2>
             <span className="text-stone-400">is now playing</span>
           </div>
         </div>
