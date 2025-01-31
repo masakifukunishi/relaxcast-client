@@ -1,7 +1,7 @@
 "use client";
 
-import Channels from "@/app/features/player/Channels";
-import { useRandomBackground } from "@/app/hooks/useRandomBackground";
+import Channels from "@/app/features/player/components/Channels";
+import { useRandomBackground } from "@/app/features/player/hooks/useRandomBackground";
 
 const Home = () => {
   const { backgroundImage, isImageLoaded } = useRandomBackground("/images/relaxing-bg");

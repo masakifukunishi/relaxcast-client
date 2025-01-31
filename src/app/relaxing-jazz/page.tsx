@@ -1,15 +1,15 @@
 "use client";
 
-import Channels from "@/app/features/player/Channels";
-import ListenerCount from "@/app/features/player/ListenerCount";
-import VolumeControl from "@/app/features/player/VolumeControl";
-import WaveformVisualizer from "@/app/features/player/WaveformVisualizer";
-import PlayButton from "@/app/features/player/PlayButton";
-import RadioHeader from "@/app/features/player/RadioHeader";
-import { useAudioPlayer } from "@/app/hooks/useAudioPlayer";
-import { useVolume } from "@/app/hooks/useVolume";
-import { useRandomBackground } from "@/app/hooks/useRandomBackground";
-import { useMediaSession } from "@/app/hooks/useMediaSession";
+import Channels from "@/app/features/player/components/Channels";
+import ListenerCount from "@/app/features/player/components/ListenerCount";
+import VolumeControl from "@/app/features/player/components/VolumeControl";
+import WaveformVisualizer from "@/app/features/player/components/WaveformVisualizer";
+import PlayButton from "@/app/features/player/components/PlayButton";
+import RadioHeader from "@/app/features/player/components/RadioHeader";
+import { useAudioPlayer } from "@/app/features/player/hooks/useAudioPlayer";
+import { useVolume } from "@/app/features/player/hooks/useVolume";
+import { useRandomBackground } from "@/app/features/player/hooks/useRandomBackground";
+import { useMediaSession } from "@/app/features/player/hooks/useMediaSession";
 const RelaxingJazz = () => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
     streamUrl: `${process.env.NEXT_PUBLIC_STREAM_URL}/live`,
