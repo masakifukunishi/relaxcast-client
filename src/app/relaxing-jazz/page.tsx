@@ -4,7 +4,7 @@ import PlayerSection from "@/app/features/player/components/PlayerSection";
 const RelaxingJazz = () => {
   return (
     <>
-      <PlayerSection />
+      <PlayerSection channel="relaxing-jazz" />
       <AboutSection channelName="Relaxing Jazz" />
     </>
   );
