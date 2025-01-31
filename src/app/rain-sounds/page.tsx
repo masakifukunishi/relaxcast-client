@@ -1,5 +1,5 @@
-import AboutSection from "@/app/features/player/components/AboutSection";
-import PlayerSection from "@/app/features/player/components/PlayerSection";
+import AboutSection from "@/features/player/components/AboutSection";
+import PlayerSection from "@/features/player/components/PlayerSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

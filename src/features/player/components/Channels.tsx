@@ -1,6 +1,6 @@
 "use client";
 import { Piano, Umbrella, Waves } from "lucide-react";
-import { formatChannelName } from "@/app/utils/format";
+import { formatChannelName } from "@/utils/format";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

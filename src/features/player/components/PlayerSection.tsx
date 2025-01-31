@@ -1,16 +1,16 @@
 "use client";
 
-import VolumeControl from "@/app/features/player/components/VolumeControl";
-import WaveformVisualizer from "@/app/features/player/components/WaveformVisualizer";
-import PlayButton from "@/app/features/player/components/PlayButton";
-import RadioHeader from "@/app/features/player/components/RadioHeader";
-import ListenerCount from "@/app/features/player/components/ListenerCount";
-import Channels from "@/app/features/player/components/Channels";
-import { useAudioPlayer } from "@/app/features/player/hooks/useAudioPlayer";
-import { useVolume } from "@/app/features/player/hooks/useVolume";
-import { useRandomBackground } from "@/app/features/player/hooks/useRandomBackground";
-import { useMediaSession } from "@/app/features/player/hooks/useMediaSession";
-import { formatChannelName } from "@/app/utils/format";
+import VolumeControl from "@/features/player/components/VolumeControl";
+import WaveformVisualizer from "@/features/player/components/WaveformVisualizer";
+import PlayButton from "@/features/player/components/PlayButton";
+import RadioHeader from "@/features/player/components/RadioHeader";
+import ListenerCount from "@/features/player/components/ListenerCount";
+import Channels from "@/features/player/components/Channels";
+import { useAudioPlayer } from "@/features/player/hooks/useAudioPlayer";
+import { useVolume } from "@/features/player/hooks/useVolume";
+import { useRandomBackground } from "@/features/player/hooks/useRandomBackground";
+import { useMediaSession } from "@/features/player/hooks/useMediaSession";
+import { formatChannelName } from "@/utils/format";
 
 interface PlayerSectionProps {
   channel: string;

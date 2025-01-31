@@ -1,6 +1,6 @@
 "use client";
 
-import { useWaveform } from "@/app/features/player/hooks/useWaveform";
+import { useWaveform } from "@/features/player/hooks/useWaveform";
 
 interface WaveformVisualizerProps {
   isPlaying: boolean;
