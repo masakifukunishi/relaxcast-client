@@ -1,11 +1,11 @@
 "use client";
 
-import Channels from "@/app/features/Channels";
-import ListenerCount from "@/app/features/ListenerCount";
-import VolumeControl from "@/app/features/VolumeControl";
-import WaveformVisualizer from "@/app/features/WaveformVisualizer";
-import PlayButton from "@/app/features/PlayButton";
-import RadioHeader from "@/app/features/RadioHeader";
+import Channels from "@/app/features/player/Channels";
+import ListenerCount from "@/app/features/player/ListenerCount";
+import VolumeControl from "@/app/features/player/VolumeControl";
+import WaveformVisualizer from "@/app/features/player/WaveformVisualizer";
+import PlayButton from "@/app/features/player/PlayButton";
+import RadioHeader from "@/app/features/player/RadioHeader";
 import { useAudioPlayer } from "@/app/hooks/useAudioPlayer";
 import { useVolume } from "@/app/hooks/useVolume";
 import { useRandomBackground } from "@/app/hooks/useRandomBackground";
