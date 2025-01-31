@@ -1,6 +1,6 @@
 "use client";
 
-import Channels from "@/app/features/components/common/Channels";
+import Channels from "@/app/features/Channels";
 import { useRandomBackground } from "@/app/hooks/useRandomBackground";
 
 const Home = () => {
