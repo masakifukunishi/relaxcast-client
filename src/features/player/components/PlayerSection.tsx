@@ -40,7 +40,7 @@ const PlayerSection = ({ channel }: PlayerSectionProps) => {
       <div className="w-full max-w-2xl px-8 py-12 relative z-10">
         <audio ref={audioRef} />
         <div className="mb-8">
-          <RadioHeader isLoading={isLoading} subtitle={formatChannelName(channel)} />
+          <RadioHeader subtitle={formatChannelName(channel)} />
           <WaveformVisualizer isPlaying={isPlaying} />
           <div className="flex flex-col items-center gap-8">
             <PlayButton isPlaying={isPlaying} isLoading={isLoading} onClick={togglePlay} />
