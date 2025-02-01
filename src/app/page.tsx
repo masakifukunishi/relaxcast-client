@@ -1,5 +1,5 @@
-const Home = () => {
-  return <div className="min-h-screen relative flex flex-col items-center justify-center text-center px-6"></div>;
-};
+import { redirect } from "next/navigation";
 
-export default Home;
+export default function Home() {
+  redirect("/relaxing-jazz");
+}
