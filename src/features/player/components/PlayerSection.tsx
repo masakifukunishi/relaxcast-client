@@ -18,7 +18,7 @@ interface PlayerSectionProps {
 
 const PlayerSection = ({ channel }: PlayerSectionProps) => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
-    streamUrl: `${process.env.NEXT_PUBLIC_STREAM_URL}/live`,
+    streamUrl: `${process.env.NEXT_PUBLIC_STREAM_URL}/${channel}`,
   });
   const { volume, setVolume } = useVolume({ audioRef });
   const { backgroundImage, isImageLoaded } = useRandomBackground(`/images/${channel}`);
