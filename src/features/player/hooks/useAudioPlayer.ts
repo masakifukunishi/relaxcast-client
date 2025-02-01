@@ -15,7 +15,7 @@ export const useAudioPlayer = ({ streamUrl }: UseAudioPlayerProps) => {
     const audio = audioRef.current;
     const shouldStartPlaying = !isPlaying;
 
-    if (shouldStartPlaying && audio.src === "") {
+    if (shouldStartPlaying) {
       setIsLoading(true);
       audio.src = streamUrl;
 
