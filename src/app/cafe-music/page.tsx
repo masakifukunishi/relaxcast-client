@@ -3,16 +3,16 @@ import PlayerSection from "@/features/player/components/PlayerSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Relaxing Jazz | Minimal Tune",
+  title: "Cafe Music | Minimal Tune",
 };
 
-const RelaxingJazz = () => {
+const CafeMusic = () => {
   return (
     <>
-      <PlayerSection channel="relaxing-jazz" />
-      <AboutSection channelName="Relaxing Jazz" />
+      <PlayerSection channel="cafe-music" />
+      <AboutSection channelName="Cafe Music" />
     </>
   );
 };
 
-export default RelaxingJazz;
+export default CafeMusic;
