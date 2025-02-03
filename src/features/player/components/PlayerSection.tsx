@@ -20,7 +20,7 @@ const PlayerSection = ({ channel }: PlayerSectionProps) => {
   const { isPlaying, isLoading, audioRef, togglePlay } = useAudioPlayer({
     streamUrl: `${process.env.NEXT_PUBLIC_STREAM_URL}/${channel}`,
   });
-  const { volume, setVolume } = useVolume({ audioRef });
+  const { volume, setVolume, isVolumeLoaded } = useVolume({ audioRef });
   const { backgroundImage, isImageLoaded } = useRandomBackground(`/images/${channel}`);
 
   useMediaSession({ togglePlay });
@@ -44,7 +44,9 @@ const PlayerSection = ({ channel }: PlayerSectionProps) => {
           <WaveformVisualizer isPlaying={isPlaying} />
           <div className="flex flex-col items-center gap-8">
             <PlayButton isPlaying={isPlaying} isLoading={isLoading} onClick={togglePlay} />
-            <VolumeControl volume={volume} onChange={setVolume} />
+            <div className={`opacity-0 transition-opacity duration-500 ${isVolumeLoaded ? "opacity-100" : ""}`}>
+              <VolumeControl volume={volume} onChange={setVolume} />
+            </div>
           </div>
         </div>
         <ListenerCount />
