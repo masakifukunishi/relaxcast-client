@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Minimal Tune",
-  description: "Minimal Background music player",
+  title: "Relax Tunes",
+  description: "An online streaming station for relaxing music",
 };
 
 export default function RootLayout({

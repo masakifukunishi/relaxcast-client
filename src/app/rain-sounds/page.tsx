@@ -3,7 +3,7 @@ import PlayerSection from "@/features/player/components/PlayerSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Rain Sound | Minimal Tune",
+  title: "Rain Sound | RelaxTunes",
 };
 
 const RainSound = () => {

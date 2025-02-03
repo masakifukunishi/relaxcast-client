@@ -6,7 +6,7 @@ const AboutSection = ({ channelName }: AboutSectionProps) => {
   return (
     <section className="w-full bg-stone-800 text-stone-200 py-20">
       <div className="max-w-3xl mx-auto px-8">
-        <h1 className="text-3xl font-bold mb-9">A relaxing music streaming station online</h1>
+        <h1 className="text-3xl font-bold mb-9">An online streaming station for relaxing music</h1>
         <div className="inline-block mb-16 bg-stone-700/50 rounded-lg px-6 py-4">
           <div className="flex items-center space-x-3">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
@@ -15,9 +15,9 @@ const AboutSection = ({ channelName }: AboutSectionProps) => {
           </div>
         </div>
         <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-4">What is Minimal Tune?</h2>
+          <h2 className="text-2xl font-bold mb-4">What is RelaxTunes?</h2>
           <p className="text-lg leading-relaxed text-stone-300">
-            Minimal Tune offers streaming channels with relaxing music to help you unwind. All channels are available 24/7, always here to
+            RelaxTunes offers streaming channels with relaxing music to help you unwind. All channels are available 24/7, always here to
             bring you warmth and comfort.
           </p>
         </div>
