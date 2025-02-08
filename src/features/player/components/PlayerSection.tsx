@@ -31,7 +31,6 @@ const PlayerSection = ({ channel }: PlayerSectionProps) => {
         className={`absolute inset-0 z-0 transition-opacity duration-500 ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
         style={{
           backgroundImage: `url('${backgroundImage}')`,
-          //   backgroundImage: `url('/images/brown-noise/background-05.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

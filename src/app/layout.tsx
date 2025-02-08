@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Relax Tunes",
-  description: "An online streaming station for relaxing music",
+  description: "An online streaming station for relaxing sounds",
 };
 
 export default function RootLayout({
