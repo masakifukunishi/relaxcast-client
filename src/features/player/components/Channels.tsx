@@ -19,7 +19,6 @@ const Channels = () => {
       <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
         {channels.map((channel) => {
           const isActive = pathname === `/${channel.name}`;
-
           return (
             <Link
               key={channel.name}
