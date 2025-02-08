@@ -1,5 +1,5 @@
 
 # RelaxTunes
 
-Relaxing music, anytime and anywhere. 
+Relaxing sounds, anytime and anywhere. 
 Immerse yourself in a soothing experience.
