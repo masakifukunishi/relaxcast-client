@@ -1,13 +1,13 @@
 "use client";
-import { Coffee, Umbrella, Waves } from "lucide-react";
+import { Waves, Umbrella, AudioLines } from "lucide-react";
 import { formatChannelName } from "@/utils/format";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const channels = [
-  { name: "cafe-music", icon: <Coffee className="w-4 h-4" /> },
+  { name: "ocean-sounds", icon: <Waves className="w-4 h-4" /> },
   { name: "rain-sounds", icon: <Umbrella className="w-4 h-4" /> },
-  { name: "brown-noise", icon: <Waves className="w-4 h-4" /> },
+  { name: "brown-noise", icon: <AudioLines className="w-4 h-4" /> },
 ];
 
 const Channels = () => {
