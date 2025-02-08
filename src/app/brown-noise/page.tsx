@@ -3,7 +3,7 @@ import PlayerSection from "@/features/player/components/PlayerSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Brown Noise | RelaxTunes",
+  title: "Brown Noise | RelaxCast",
 };
 
 const BrownNoise = () => {
