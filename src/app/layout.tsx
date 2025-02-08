@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Relax Tunes",
+  title: "RelaxCast",
   description: "An online streaming station for relaxing sounds",
 };
 
