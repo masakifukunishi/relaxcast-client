@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 interface UseAudioPlayerProps {
   streamUrl: string;
@@ -7,10 +7,27 @@ interface UseAudioPlayerProps {
 export const useAudioPlayer = ({ streamUrl }: UseAudioPlayerProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
 
-  const togglePlay = () => {
-    if (!audioRef.current) return;
+    const handleCanPlay = () => setIsLoading(false);
+    const handleError = () => setIsLoading(false);
+
+    audio.addEventListener("canplay", handleCanPlay);
+    audio.addEventListener("error", handleError);
+
+    return () => {
+      audio.removeEventListener("canplay", handleCanPlay);
+      audio.removeEventListener("error", handleError);
+    };
+  }, []);
+
+  const togglePlay = useCallback(() => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio(streamUrl);
+    }
 
     const audio = audioRef.current;
     const shouldStartPlaying = !isPlaying;
@@ -18,19 +35,13 @@ export const useAudioPlayer = ({ streamUrl }: UseAudioPlayerProps) => {
     if (shouldStartPlaying) {
       setIsLoading(true);
       audio.src = streamUrl;
-
-      audio.addEventListener("canplay", () => {
-        setIsLoading(false);
-      });
-
-      audio.addEventListener("error", () => {
-        setIsLoading(false);
-      });
+      audio.play().catch(() => setIsLoading(false));
+    } else {
+      audio.pause();
     }
 
-    shouldStartPlaying ? audio.play() : audio.pause();
     setIsPlaying(shouldStartPlaying);
-  };
+  }, [isPlaying, streamUrl]);
 
   return {
     isPlaying,
