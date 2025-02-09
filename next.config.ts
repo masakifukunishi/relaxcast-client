@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/",
-        destination: "/brown-noise",
+        destination: "/ocean-sounds",
         permanent: true,
       },
     ];
