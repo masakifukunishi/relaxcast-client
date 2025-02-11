@@ -10,13 +10,11 @@ export const useRandomBackground = (folderPath: string) => {
     const selectedBackground = backgrounds[randomIndex];
     const imagePath = `${folderPath}/${selectedBackground}`;
 
+    setBackgroundImage(imagePath);
+
     const img = new Image();
     img.src = imagePath;
-
-    img.onload = () => {
-      setBackgroundImage(imagePath);
-      setIsImageLoaded(true);
-    };
+    img.onload = () => setIsImageLoaded(true);
   }, [folderPath]);
 
   return { backgroundImage, isImageLoaded };
