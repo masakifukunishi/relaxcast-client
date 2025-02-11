@@ -5,7 +5,9 @@ const Footer = () => {
     <footer className="text-white text-center p-4">
       <hr className="border-gray-500 my-4" />
       <nav className="font-bold flex justify-center space-x-6 mb-2">
-        <a href="/">Home</a>
+        <Link href="/" className="hover:underline">
+          Home
+        </Link>
         <Link href="/privacy" className="hover:underline">
           Privacy
         </Link>
