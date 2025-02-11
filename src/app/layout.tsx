@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "An online streaming station for relaxing sounds",
   openGraph: {
     title: "RelaxCast",
-    description: "Unwinding with soothing sounds on RelaxCast 🎧🍃",
+    description: "An online streaming station for relaxing sounds",
     url: "https://relaxcast.net",
     siteName: "RelaxCast",
     images: [
