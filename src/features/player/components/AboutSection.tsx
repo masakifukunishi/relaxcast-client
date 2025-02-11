@@ -4,7 +4,7 @@ interface AboutSectionProps {
 
 const AboutSection = ({ channelName }: AboutSectionProps) => {
   return (
-    <section className="w-full bg-stone-800 text-stone-200 py-20">
+    <section className="w-full text-stone-200 py-20">
       <div className="max-w-3xl mx-auto px-8">
         <h2 className="text-3xl font-bold mb-9">An online streaming station for relaxing sounds</h2>
         <div className="inline-block mb-16 bg-stone-700/50 rounded-lg px-6 py-4">

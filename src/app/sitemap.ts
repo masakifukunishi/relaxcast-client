@@ -20,5 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/brown-noise`,
       lastModified: new Date().toISOString(),
     },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date().toISOString(),
+    },
   ];
 }
