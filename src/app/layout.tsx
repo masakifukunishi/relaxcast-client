@@ -5,6 +5,21 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "RelaxCast",
   description: "An online streaming station for relaxing sounds",
+  openGraph: {
+    title: "RelaxCast",
+    description: "Unwinding with soothing sounds on RelaxCast 🎧🍃",
+    url: "https://relaxcast.net",
+    siteName: "RelaxCast",
+    images: [
+      {
+        url: "https://relaxcast.net/images/og/og.png",
+        width: 1200,
+        height: 630,
+        alt: "RelaxCast",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
