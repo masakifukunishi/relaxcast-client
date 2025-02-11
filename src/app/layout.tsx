@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: "RelaxCast",
     images: [
       {
-        url: "https://relaxcast.net/images/og/og.png",
+        url: "https://relaxcast.net/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "RelaxCast",
