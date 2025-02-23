@@ -1,5 +1,18 @@
-import { redirect } from "next/navigation";
+import AboutSection from "@/features/player/components/AboutSection";
+import PlayerSection from "@/features/player/components/PlayerSection";
+import { Metadata } from "next";
 
-export default function Home() {
-  redirect("/ocean-sounds");
-}
+export const metadata: Metadata = {
+  title: "Ocean Sounds | RelaxCast",
+};
+
+const OceanSounds = () => {
+  return (
+    <>
+      <PlayerSection channel="ocean-sounds" />
+      <AboutSection channelName="Ocean Sounds" />
+    </>
+  );
+};
+
+export default OceanSounds;

@@ -9,10 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date().toISOString(),
     },
     {
-      url: `${baseUrl}/ocean-sounds`,
-      lastModified: new Date().toISOString(),
-    },
-    {
       url: `${baseUrl}/rain-sounds`,
       lastModified: new Date().toISOString(),
     },
