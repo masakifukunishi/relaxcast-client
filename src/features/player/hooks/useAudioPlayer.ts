@@ -8,6 +8,7 @@ export const useAudioPlayer = ({ streamUrl }: UseAudioPlayerProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -21,6 +22,9 @@ export const useAudioPlayer = ({ streamUrl }: UseAudioPlayerProps) => {
     return () => {
       audio.removeEventListener("canplay", handleCanPlay);
       audio.removeEventListener("error", handleError);
+      audio.pause();
+      audio.src = "";
+      audioRef.current = null;
     };
   }, []);
 
@@ -38,6 +42,8 @@ export const useAudioPlayer = ({ streamUrl }: UseAudioPlayerProps) => {
       audio.play().catch(() => setIsLoading(false));
     } else {
       audio.pause();
+      audio.src = "";
+      audioRef.current = null;
     }
 
     setIsPlaying(shouldStartPlaying);
