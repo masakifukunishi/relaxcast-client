@@ -17,6 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date().toISOString(),
     },
     {
+      url: `${baseUrl}/fireplace-sounds`,
+      lastModified: new Date().toISOString(),
+    },
+    {
       url: `${baseUrl}/terms`,
       lastModified: new Date().toISOString(),
     },
