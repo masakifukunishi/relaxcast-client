@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 const channels = [
   { name: "ocean-sounds", icon: <Waves className="w-4 h-4" /> },
   { name: "rain-sounds", icon: <Umbrella className="w-4 h-4" /> },
-  { name: "brown-noise", icon: <AudioLines className="w-4 h-4" /> },
   { name: "fireplace-sounds", icon: <Flame className="w-4 h-4" /> },
+  { name: "brown-noise", icon: <AudioLines className="w-4 h-4" /> },
 ];
 
 const Channels = () => {
