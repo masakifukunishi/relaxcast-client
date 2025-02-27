@@ -17,8 +17,7 @@ const AboutSection = ({ channelName }: AboutSectionProps) => {
         <div className="mb-16">
           <h2 className="text-2xl font-bold mb-4">What is RelaxCast?</h2>
           <p className="text-lg leading-relaxed text-stone-300">
-            RelaxCast offers streaming channels with relaxing sounds to help you unwind. All channels are available 24/7, always here to
-            bring you warmth and comfort.
+            RelaxCast offers streaming channels with relaxing sounds to help you unwind. Always here to bring you warmth and comfort.
           </p>
         </div>
         <div>
